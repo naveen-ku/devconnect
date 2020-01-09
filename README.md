@@ -1,4 +1,4 @@
-## A social media platform for devolopers.
+## A social media platform for developers.
 
 ## Tech Stack
 ### Runtime Environemt
