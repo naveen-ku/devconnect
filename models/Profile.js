@@ -26,7 +26,7 @@ const ProfileSchema = new Schema({
     required: true
   },
   skills: {
-    type: [string],
+    type: String,
     required: true
   },
   bio: {
@@ -96,19 +96,19 @@ const ProfileSchema = new Schema({
   ],
   social: {
     youtube: {
-      type: string
+      type: String
     },
     twitter: {
-      type: string
+      type: String
     },
     facebook: {
-      type: string
+      type: String
     },
     linkedin: {
-      type: string
+      type: String
     },
     instagram: {
-      type: string
+      type: String
     }
   },
   date: {
