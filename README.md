@@ -1,14 +1,10 @@
 ## A social media platform for developers.
 
-## Tech Stack
-### Runtime Environemt
-+ NodeJs
-### Backend
-+ Express
-### Database
-+ MongoDB
-### Frontend
-+ React
+> This project is a part of `Udemy - MERN Stack Front To Back Full Stack React, Redux & Node.js` by **Brad Traversy**
 
-### Tools and other tech
-+ JWT
+## Tech Stack
+
+- MongoDB
+- Express
+- React
+- NodeJs

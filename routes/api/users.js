@@ -6,23 +6,19 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
 
-
 //Load Input Validation
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
-
 //Load User model
 const User = require("../../models/User");
-
 
 // @route    GET api/users/test
 // @desc     Tests users route
 // @access   Public
 router.get("/test", (req, res) => res.json({ msg: "Users Works" }));
 
-
-// @route    GET api/users/register
+// @route    POST api/users/register
 // @desc     Register users route
 // @access   Public
 router.post("/register", (req, res) => {
@@ -63,14 +59,12 @@ router.post("/register", (req, res) => {
       });
     }
   });
-
 });
-
 
 // @route    GET api/users/login
 // @desc     Login User / Returning JWT Token
 // @access   Public
-router.post('/login', (req, res) => {
+router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
 
   // Check Validation
@@ -85,7 +79,7 @@ router.post('/login', (req, res) => {
   User.findOne({ email }).then(user => {
     // Check for user
     if (!user) {
-      errors.email = 'User not found';
+      errors.email = "User not found";
       return res.status(404).json(errors);
     }
 
@@ -103,12 +97,12 @@ router.post('/login', (req, res) => {
           (err, token) => {
             res.json({
               success: true,
-              token: 'Bearer ' + token
+              token: "Bearer " + token
             });
           }
         );
       } else {
-        errors.password = 'Password incorrect';
+        errors.password = "Password incorrect";
         return res.status(400).json(errors);
       }
     });
@@ -121,12 +115,13 @@ router.post('/login', (req, res) => {
 router.get(
   "/current",
   passport.authenticate("jwt", { session: false }),
-   (req, res) => {
+  (req, res) => {
     res.json({
       id: req.user.id,
       name: req.user.name,
       email: req.user.email
     });
-  });
+  }
+);
 
 module.exports = router;
