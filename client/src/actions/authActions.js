@@ -1,60 +1,59 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-
-import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 import setAuthToken from "../utils/setAuthToken";
+import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 
-//Register User
-export const registerUser = (userData, history) => dispatch => {
+export const registerUser = (userData, history) => (dispatch) => {
   axios
     .post("/api/users/register", userData)
-    .then(res => history.push("/login"))
-    .catch(err =>
+    .then((res) => history.push("/login"))
+    .catch((err) =>
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data
+        payload: err.response.data,
       })
     );
 };
 
-//Login- Get User Token
-export const loginUser = userData => dispatch => {
+// Login - Get User Token
+export const loginUser = (userData) => (dispatch) => {
   axios
     .post("/api/users/login", userData)
-    .then(res => {
+    .then((res) => {
       //Save to localStorage
       const { token } = res.data;
-      //Set token as localStorage
+      //Set token to ls
       localStorage.setItem("jwtToken", token);
-      //Set token to Auth header
+      //Set token to auth header
       setAuthToken(token);
       //Decode token to get user data
       const decoded = jwt_decode(token);
+      console.log(decoded);
       //Set current user
       dispatch(setCurrentUser(decoded));
     })
-    .catch(err =>
+    .catch((err) =>
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data
+        payload: err.response.data,
       })
     );
 };
 
 //Set logged in user
-export const setCurrentUser = decoded => {
+export const setCurrentUser = (decoded) => {
   return {
     type: SET_CURRENT_USER,
-    payload: decoded
+    payload: decoded,
   };
 };
 
-//Log User Out
-export const logoutUser = () => dispatch => {
-  //Remove token from localStorage
+//Log user out
+export const logoutUser = () => (dispatch) => {
+  //Remove token from localstorage
   localStorage.removeItem("jwtToken");
   //Remove auth header for future requests
   setAuthToken(false);
-  //Set the current user to {} which will set isAuthenticated to false
+  //Set current user to {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
 };

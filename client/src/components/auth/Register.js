@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
 import classnames from "classnames";
-
-//To connect redux to this component
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { registerUser } from "../../actions/authActions";
-
 class Register extends Component {
   constructor() {
     super();
@@ -15,40 +12,38 @@ class Register extends Component {
       email: "",
       password: "",
       password2: "",
-      errors: {}
+      errors: {},
     };
-
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
   }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
   }
 
-  onChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
-    // console.log({ [event.target.name]: event.target.value });
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
-
-  onSubmit(event) {
-    event.preventDefault();
+  onSubmit(e) {
+    e.preventDefault();
     const newUser = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
-      password2: this.state.password2
+      password2: this.state.password2,
     };
 
     this.props.registerUser(newUser, this.props.history);
   }
-
   render() {
     const { errors } = this.state;
     return (
@@ -65,7 +60,7 @@ class Register extends Component {
                   <input
                     type="text"
                     className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.name
+                      "is-invalid": errors.name,
                     })}
                     placeholder="Name"
                     name="name"
@@ -73,22 +68,22 @@ class Register extends Component {
                     onChange={this.onChange}
                   />
                   {errors.name && (
-                    <div className="is-invalid-feedback">{errors.name}</div>
+                    <div className="invalid-feedback"> {errors.name}</div>
                   )}
                 </div>
                 <div className="form-group">
                   <input
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.email
-                    })}
                     type="email"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.email,
+                    })}
                     placeholder="Email Address"
                     name="email"
                     value={this.state.email}
                     onChange={this.onChange}
                   />
                   {errors.email && (
-                    <div className="is-invalid-feedback">{errors.email}</div>
+                    <div className="invalid-feedback"> {errors.email}</div>
                   )}
                   <small className="form-text text-muted">
                     This site uses Gravatar so if you want a profile image, use
@@ -97,34 +92,32 @@ class Register extends Component {
                 </div>
                 <div className="form-group">
                   <input
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.password
-                    })}
                     type="password"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.password,
+                    })}
                     placeholder="Password"
                     name="password"
                     value={this.state.password}
                     onChange={this.onChange}
                   />
                   {errors.password && (
-                    <div className="is-invalid-feedback">{errors.password}</div>
+                    <div className="invalid-feedback"> {errors.password}</div>
                   )}
                 </div>
                 <div className="form-group">
                   <input
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.password2
-                    })}
                     type="password"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.password2,
+                    })}
                     placeholder="Confirm Password"
                     name="password2"
                     value={this.state.password2}
                     onChange={this.onChange}
                   />
-                  {errors.password2 && (
-                    <div className="is-invalid-feedback">
-                      {errors.password2}
-                    </div>
+                  {errors.password && (
+                    <div className="invalid-feedback"> {errors.password}</div>
                   )}
                 </div>
                 <input type="submit" className="btn btn-info btn-block mt-4" />
@@ -140,11 +133,11 @@ class Register extends Component {
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   auth: state.auth,
-  errors: state.errors
+  errors: state.errors,
 });
 export default connect(mapStateToProps, { registerUser })(withRouter(Register));

@@ -1,11 +1,11 @@
 import React from "react";
 
-export default function Footer() {
+function Footer() {
   return (
-    <div>
-      <footer className="bg-dark text-white mt-5 p-4 text-center" style={{}}>
-        Copyright &copy; {new Date().getFullYear()} Dev Connect
-      </footer>
-    </div>
+    <footer className="bg-dark text-white mt-5 p-4 text-center">
+      Copyright &copy; 2020 Dev Connect
+    </footer>
   );
 }
+
+export default Footer;
