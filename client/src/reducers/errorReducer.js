@@ -2,7 +2,7 @@ import { GET_ERRORS } from "../actions/types";
 
 const initialState = {};
 
-function rootReducer(state = initialState, action) {
+function errorReducer(state = initialState, action) {
   switch (action.type) {
     case GET_ERRORS:
       return action.payload;
@@ -11,4 +11,4 @@ function rootReducer(state = initialState, action) {
   }
 }
 
-export default rootReducer;
+export default errorReducer;

@@ -6,7 +6,7 @@ const initialState = {
   user: {},
 };
 
-function rootReducer(state = initialState, action) {
+function authReducer(state = initialState, action) {
   switch (action.type) {
     case SET_CURRENT_USER:
       return {
@@ -19,4 +19,4 @@ function rootReducer(state = initialState, action) {
   }
 }
 
-export default rootReducer;
+export default authReducer;
