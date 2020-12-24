@@ -33,10 +33,6 @@ mongoose
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
-app.get("/", (req, res) => {
-  res.send("hello world !!");
-});
-
 //Use routes
 
 app.use("/api/users", users);
