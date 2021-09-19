@@ -15,15 +15,15 @@ This is a MERN stack project to connect users and showcase their professional pr
 
 <p align="center"><img src="images/home.png" width="450" height="300"/></p>
 <p align="center"><img src="images/profiles.png" width="550" height="600" /></p>
-<img src="images/signup.png" width="450" height="300" />
-<img src="images/login.png" width="450" height="300" />
+<img src="images/signup.png" width="400" height="300" />
+<img src="images/login.png" width="400" height="300" />
 <p align="center"><img src="images/user-profile.png" width="550" height="600" /></p>
-<img src="images/dashboard.png" width="450" height="300" />
-<img src="images/add-education.png" width="450" height="300" />
-<img src="images/add-experience.png" width="450" height="300" />
-<img src="images/edit-profile.png" width="450" height="300" />
-<img src="images/post-feed.png" width="450" height="500" />
-<img src="images/post-detail.png" width="450" height="500" />
+<img src="images/dashboard.png" width="400" height="300" />
+<img src="images/add-education.png" width="400" height="300" />
+<img src="images/add-experience.png" width="400" height="300" />
+<img src="images/edit-profile.png" width="400" height="300" />
+<img src="images/post-feed.png" width="400" height="500" />
+<img src="images/post-detail.png" width="400" height="500" />
 
 ## Tech Stack
 
