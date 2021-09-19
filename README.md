@@ -52,11 +52,19 @@ This is a MERN stack project to connect users and showcase their professional pr
 To run the project on localhost follow the given steps in `root directory`. Open terminal and type following commands:
 
 1. ```bash
-   > npm install
+   npm install
    ```
 
 2. ```bash
-   > npm run client-install
+   npm run client-install
+   ```
+
+**<p align="center"> OR </p>**
+
+2. Run following command from `client directory`:
+
+   ```bash
+   npm install
    ```
 
 3. Create a new cluster at [Mongodb atlas](https://www.mongodb.com/cloud/atlas). For this follow this [guide](https://docs.atlas.mongodb.com/tutorial/create-new-cluster/).
@@ -64,7 +72,7 @@ To run the project on localhost follow the given steps in `root directory`. Open
 4. Connect the new cluster using this [guide](https://docs.atlas.mongodb.com/connect-to-database-deployment/)
 
 5. ```bash
-   > cd config && touch keys_dev.js
+   cd config && touch keys_dev.js
    ```
 
 6. Write the following code in `keys_dev.js` and replace data inside quotation marks.
@@ -76,20 +84,20 @@ To run the project on localhost follow the given steps in `root directory`. Open
    };
    ```
 
-7. Run `node` server from **root directory** and `client` server from **client directory** by typing following commands in termimal:
+7. Run `node` server from `root directory` and `client` server from `client directory` by typing following commands in termimal:
 
    ```bash
-   > npm run server
-   > cd client
-   > npm start
+   npm run server
+   cd client
+   npm start
    ```
 
 **<p align="center"> OR </p>**
 
-8. Run following command from **root directory**:
+7. Run following command from `root directory`:
 
    ```bash
-   > npm run dev
+   npm run dev
    ```
 
 ## Deploy on Heroku
