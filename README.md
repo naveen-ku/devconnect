@@ -13,24 +13,24 @@ This is a MERN stack project to connect users and showcase their professional pr
 
 ## Snapshots
 
-<p align="center"><img src="images/home.png" width="450" height="300"/></p>
-<p align="center"><img src="images/profiles.png" width="550" height="600" /></p>
+<p align="center"><img src="server/images/home.png" width="450" height="300"/></p>
+<p align="center"><img src="server/images/profiles.png" width="550" height="600" /></p>
 <p align="center">
-<img src="images/signup.png" width="400" height="300" />
-<img src="images/login.png" width="400" height="300" />
+<img src="server/images/signup.png" width="400" height="300" />
+<img src="server/images/login.png" width="400" height="300" />
 </p>
-<p align="center"><img src="images/user-profile.png" width="550" height="600" /></p>
+<p align="center"><img src="server/images/user-profile.png" width="550" height="600" /></p>
 <p align="center">
-<img src="images/dashboard.png" width="400" height="300" />
-<img src="images/add-education.png" width="400" height="300" />
-</p>
-<p align="center">
-<img src="images/add-experience.png" width="400" height="300" />
-<img src="images/edit-profile.png" width="400" height="300" />
+<img src="server/images/dashboard.png" width="400" height="300" />
+<img src="server/images/add-education.png" width="400" height="300" />
 </p>
 <p align="center">
-<img src="images/post-feed.png" width="400" height="500" />
-<img src="images/post-detail.png" width="400" height="500" />
+<img src="server/images/add-experience.png" width="400" height="300" />
+<img src="server/images/edit-profile.png" width="400" height="300" />
+</p>
+<p align="center">
+<img src="server/images/post-feed.png" width="400" height="500" />
+<img src="server/images/post-detail.png" width="400" height="500" />
 </p>
 
 ## Tech Stack
@@ -47,35 +47,20 @@ This is a MERN stack project to connect users and showcase their professional pr
 - `models` => contains database models
 - `routes` => contains RESTful api/ end routes
 
-## Run on localhost
+## Run on localhost using docker
 
-To run the project on localhost follow the given steps in `root directory`. Open terminal and type following commands:
+To run the project on localhost follow the given steps in `root directory`.
 
-1. ```bash
-   npm install
-   ```
+1. Create a new cluster at [Mongodb atlas](https://www.mongodb.com/cloud/atlas). For this follow this [guide](https://docs.atlas.mongodb.com/tutorial/create-new-cluster/).
 
-2. ```bash
-   npm run client-install
-   ```
+2. Connect the new cluster using this [guide](https://docs.atlas.mongodb.com/connect-to-database-deployment/)
 
-**<p align="center"> OR </p>**
-
-2. Run following command from `client directory`:
-
+3. Create the file `keys_dev.js` using format as given below in `server/config` directory.
    ```bash
-   npm install
+   cd server/config && touch keys_dev.js
    ```
 
-3. Create a new cluster at [Mongodb atlas](https://www.mongodb.com/cloud/atlas). For this follow this [guide](https://docs.atlas.mongodb.com/tutorial/create-new-cluster/).
-
-4. Connect the new cluster using this [guide](https://docs.atlas.mongodb.com/connect-to-database-deployment/)
-
-5. ```bash
-   cd config && touch keys_dev.js
-   ```
-
-6. Write the following code in `keys_dev.js` and replace data inside quotation marks.
+4. Write the following code in `keys_dev.js` and replace data inside quotation marks.
 
    ```javascript
    module.exports = {
@@ -84,22 +69,19 @@ To run the project on localhost follow the given steps in `root directory`. Open
    };
    ```
 
-7. Run `node` server from `root directory` and `client` server from `client directory` by typing following commands in termimal:
-
+5. Download Docker for your system [from here](https://www.docker.com/products/docker-desktop/)
+   
+6. Inside root directory use the following command to run the project.
    ```bash
-   npm run server
-   cd client
-   npm start
+   docker-compose up
    ```
 
-**<p align="center"> OR </p>**
+## Other Instructions
 
-7. Run following command from `root directory`:
-
+1. If you change any `docker-compose.yml`, `nginx configuration`, `package.json` file then use following command to build and run the images.
    ```bash
-   npm run dev
+   docker-compose up --build
    ```
-
 ## Deploy on Heroku
 
 - Download [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
